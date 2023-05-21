@@ -4,7 +4,7 @@ const { developmentChains } = require('../helper-hardhat-config');
 const { verify } = require('../utils/verify');
 
 async function main() {
-  let arguments = ['0x...', 1];
+  let arguments = ['0x...', 10];
 
   const FlashLoanARB = await hre.ethers.getContractFactory('FlashLoanArbitrage');
   const flashLoanARB = await FlashLoanARB.deploy(...arguments);
