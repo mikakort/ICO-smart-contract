@@ -6,15 +6,15 @@ const { verify } = require('../utils/verify');
 async function main() {
   let arguments = ['0x...', 10];
 
-  const FlashLoanARB = await hre.ethers.getContractFactory('FlashLoanArbitrage');
-  const flashLoanARB = await FlashLoanARB.deploy(...arguments);
+  const ICO = await hre.ethers.getContractFactory('ICO');
+  const ico = await ICO.deploy(...arguments);
 
-  await flashLoanARB.deployed();
-  console.log(`Flash loan contract deployed at: ${flashLoanARB.address}`);
+  await ico.deployed();
+  console.log(`ICO contract deployed at: ${ico.address}`);
 
   if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     console.log('Verifying...');
-    await verify(flashLoanARB.address, arguments);
+    await verify(ico.address, arguments);
   }
 }
 
